@@ -1,4 +1,4 @@
-﻿part2("in.txt");
+﻿part1("in.txt");
 
 static void part1(string file)
 {
@@ -238,19 +238,13 @@ public class MatrixPoint
         Y = y;
         Height = v;
         DistanceToStart = int.MaxValue;
-        InOpenList = true;
     }
 
     public int DistanceToStart { get; set; }
     public int Height{ get; set; }
     public int X { get; set; }
     public int Y { get; set; }
-    public bool InOpenList{ get; set; }
     public MatrixPoint Parent { get; set; }
-    public int OpenListPrevX{ get; set; }
-    public int OpenListPrevY { get; set; }
-    public int OpenListNextX{ get; set; }
-    public int OpenListNextY { get; set; }
     public int CheckedCount { get; set; }
     public int TaxicabDistanceToGoal(int goalX, int goalY)
     {
