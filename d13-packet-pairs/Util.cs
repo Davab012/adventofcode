@@ -61,12 +61,10 @@ namespace d13_packet_pairs
                 {
                     if (IsList(left))
                     {
-                        //var l = Elementize(left);
                         right = MakeList(right);
                     }
                     else
                     {
-                        //var l = Elementize(right);
                         left = MakeList(left);
                     }
                 }
@@ -93,14 +91,7 @@ namespace d13_packet_pairs
 
         static bool IsList(string input) => input != null && input != "" && input[0] == '[';
 
-
-        // Comparing [2,3,4] with 4 should not result in right side running out of elements... strangely enough...
-        // Solve this by duplicating the 4 to [4,4,4]
-        static string MakeList(string input)//, int numDuplicates)
-        {
-            //var list = Enumerable.Repeat(input, numDuplicates);
-            return '[' + input + ']'; // + string.Join(",", list) + ']';
-        }
+        static string MakeList(string input) => '[' + input + ']';
 
         public static void Log(string msg)
         {
@@ -146,8 +137,7 @@ namespace d13_packet_pairs
                     if (level == 0)
                     {
                         var val = str.Substring(previousEnd + 1, i - (previousEnd + 1));
-                        if (val == "") val = null;
-                        parts.Add(val);
+                        parts.Add(string.IsNullOrEmpty(val) ? null : val);
                         previousEnd = i;
                     }
                 }
@@ -159,8 +149,7 @@ namespace d13_packet_pairs
 
             // End of string
             var val2 = str.Substring(previousEnd + 1);
-            if (val2 == "") val2 = null;
-            parts.Add(val2);
+            parts.Add(string.IsNullOrEmpty(val2) ? null : val2);
 
             return parts;
         }
